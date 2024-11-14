@@ -95,9 +95,10 @@ match selection:
         with eda_tab_scatter:
             st.subheader("Scatter Plot")
 
-            target_col = st.selectbox("Select target column:", df.columns)
-            columns = df.columns
-            columns.remove(target_col)
+            target_col = st.selectbox(
+                "Select target column:", df.select(pl.col(pl.String)).columns
+            )
+            columns = df.select(pl.all().exclude(pl.String)).columns
 
             x_axis = st.selectbox("Select x-axis:", columns)
             y_columns = columns
