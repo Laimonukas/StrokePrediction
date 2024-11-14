@@ -1,0 +1,10 @@
+kagglehub
+polars
+numpy
+plotly
+scipy
+scikit-learn
+imbalanced-learn
+streamlit
+dill
+jupyter
