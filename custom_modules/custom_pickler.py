@@ -37,7 +37,7 @@ class DillWrapper:
         self.verbose = dill_verbose
 
     def pickle_object(self, obj, file_name: str, overwrite: bool = False):
-        path = self.full_path + "\\PickleJar\\"
+        path = self.full_path + "/PickleJar/"
         file_name = path + file_name
 
         if not file_name.endswith(".pkl"):
@@ -67,7 +67,7 @@ class DillWrapper:
         )
 
     def load(self, create_if_not_exist: bool = False):
-        path = self.full_path + "\\PickleJar\\"
+        path = self.full_path + "/PickleJar/"
         file_name = path + self.hash_object() + ".pkl"
 
         if os.path.isfile(file_name):
@@ -78,9 +78,9 @@ class DillWrapper:
                 return self.dump()
             else:
                 raise FileNotFoundError(f"File {file_name} does not exist.")
-            
+
     def load_by_hash(self, hash_str: str):
-        path = self.full_path + "\\PickleJar\\"
+        path = self.full_path + "/PickleJar/"
         file_name = path + hash_str + ".pkl"
 
         if os.path.isfile(file_name):
@@ -90,7 +90,7 @@ class DillWrapper:
             raise FileNotFoundError(f"File {file_name} does not exist.")
 
     def remove(self):
-        path = self.full_path + "\\PickleJar\\"
+        path = self.full_path + "/PickleJar/"
         file_name = path + self.hash_object() + ".pkl"
         if os.path.isfile(file_name):
             os.remove(file_name)
